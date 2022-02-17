@@ -16,3 +16,4 @@ REQUIRED LIBRARIES:
 5) datetime
 6) random
 
+** Place all of the files in the same folder , as the main.py file references those files. In addition, in the main.py file, please make sure the relative path matches where the images and the other files are located on your computer.
