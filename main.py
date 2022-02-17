@@ -1,4 +1,4 @@
-# This is the money man program that should be funny
+# This is the Money Man program that should be funny
 
 from sys import *
 from _datetime import datetime
