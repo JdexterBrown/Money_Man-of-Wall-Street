@@ -1,3 +1,7 @@
+![wall Street](https://user-images.githubusercontent.com/99571303/154401545-8ec46d4d-9f96-4d7b-bee9-e893360833cf.jpg)
+
+<h1><font color:"Green">THE MONEY MAN OF WALL STREET</h1>
+
 **********************************************************************************************
 This is my first coding project that I developed, called "Money Man of Wall Street". This code was my first attempt at combining multiple concepts in python.
 This program runs on python 3.9 
@@ -11,3 +15,4 @@ REQUIRED LIBRARIES:
 4) sys
 5) datetime
 6) random
+
