@@ -1,0 +1,8 @@
+########## Requirements without Version Specifiers #########
+datetime
+textwrap   
+PIL 
+random
+sys import exit
+time
+My_Country
