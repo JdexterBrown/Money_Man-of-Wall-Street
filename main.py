@@ -1,6 +1,7 @@
 # This is the Money Man program that should be funny
 
 from sys import *
+import os
 from _datetime import datetime
 import textwrap   # import this module in order to wrap imported word doc
 from PIL import Image
@@ -9,6 +10,7 @@ from sys import exit
 from Ages import calculate_age
 import time
 from figuringout_class import My_Country
+
 
 
 def header():
@@ -31,8 +33,11 @@ def intro_to_game():
     time.sleep(3)
 
 def reading_of_will():
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname,'mywillforgame.txt')  # filename = os.path.join(dirname, 'relative/path/to/file/you/want')
     print("You May now read my willl Yoda")
-    will = open(r"C:\Users\HackerJB\PycharmProjects\Wolf of Wall Street\mywillforgame.txt", 'r')
+    will = open(filename,'r')
+    #will = open(r"C:\Users\HackerJB\PycharmProjects\Wolf of Wall Street\mywillforgame.txt", 'r')
     will_read = will.read()  # This reads the entire file called will
     wrapper = textwrap.TextWrapper(width=85) # wraps the text into a single paragraph
     string = wrapper.fill(text=will_read)
@@ -55,10 +60,15 @@ def new_identity():
 
 """Engine to create new identity"""
 def altered_identity():   # creates the altered identity and returns a picture of what your ID now looks like
+    dirname = os.path.dirname(__file__)
+    """If the face picture files are not added in the same folder as the main.py , you need to set the filename2 
+    variable to as such filename = os.path.join(dirname, 'relative/path/to/file/you/want') and make sure the "pic_of_new
+    face  refers to  filename 2 in place of {dir name} """
+
     new_face = ['face1.jpg','face2.jpg','face3.jpg','face4.jpg']
     face = r"C:\Users\HackerJB\PycharmProjects\pythonthehardway\\vent\MoneyMan\\"
     new_face_item = random.choice(new_face)
-    pic_of_newFace = Image.open(f"{face}{new_face_item}")
+    pic_of_newFace = Image.open(f"{dirname}\\{new_face_item}")
 
     new_name = input("whats your new first name last name: ")
 
@@ -108,39 +118,45 @@ def current_assets():
 
 # Identify the asset you want to inherit
 def Assets_you_want():
+
+    asset_selection = ("The asset you selected was: {}")
     count = 1
     b = False
-    while b == False:
 
-        a = input("Which asset do you want? Please type in the name of the asset:").lower()
+    def cars(asset):
+        print(asset_selection.format(a))
+        b = True
+    def buildings(asset):
+        print(asset_selection.format(a))
+        b = True
 
-        if a == "cars":
-            print("The asset you selected was {}".format(a))
-            b = True
+    def notes(asset):
+        print(asset_selection.format(a))
+        b = True
 
-        elif a == "buildings":
-            print("The asset you selected was {}".format(a))
-            b = True
-        elif "notes" in a:
-            print("The asset you selected was {}".format(a))
-            b = True
+    def gold(asset):
+        print(asset_selection.format(a))
+        b = True
+    def stock(asset):
+        print(asset_selection.format(a))
+        b = True
 
-        elif a == "gold":
-            print("The asset you selected was {}".format(a))
-            b = True
-        elif "stock" in a:
-            print("The asset you selected was {}".format(a))
-            b = True
+    def art_work(asset):
+        print(asset_selection.format(a))
+        b = True
 
-        elif a == "art work":
-            print("The asset you selected was {}".format(a))
-            b = True
+    def tech_company(asset):
+        print(asset_selection.format(a))
+        b = True
 
-        elif a == "tech company":
-            print("The asset you selected was {}".format(a))
-            b = True
-        else:
-            b = False
+    assets_for_selection = {
+        "cars": cars, "buildings":buildings,"Mortgage Notes":notes,"gold":gold, "stock":stock, "art work":art_work,"tech company"
+        :tech_company
+    }
+    #while b == False:  # used a dictionary in place of using while b == False
+
+    a = input("Which asset do you want? Please type in the name of the asset:").lower()
+    assets_for_selection.get(a)
 
     asset_logic(a, count)
 
@@ -276,13 +292,12 @@ def tryAgain():
     else:
         exit(0)
 
+def main():
+    header()
+    intro_to_game()
+    reading_of_will()
+    current_assets()
+    Assets_you_want()
 
-header()
-intro_to_game()
-reading_of_will()
-current_assets()
-Assets_you_want()
-
-
-
-
+if __name__== "__main__":
+    main()
